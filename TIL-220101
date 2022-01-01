@@ -1,0 +1,69 @@
+# Today
+---------------
+오늘은 1월 1일! 그치만 스터디 하는날~ 오늘 스터디원들 전원 출석 했다. 다들 새해 복 많이 받으라고 하면서 기쁜 마음으로 문제를 풀었다^^  
+
+# 
+> https://programmers.co.kr/learn/courses/30/lessons/62048
+```jsx
+function solution(w, h) {
+ 
+//   대각선을 지나는 사각현의 갯수 공식: 사각형의 가로 + 사각형의 세로 -(가로,세로 최대공약수)
+//    w+h - (w,h의 최대공약수)
+//   최대공약수 구하는방법 : 유클리드 호제법
+  function gcd(w,h) {
+        
+        const mod = w % h
+        if(mod === 0) {
+          return h  
+        }
+        return gcd(h, mod)
+    }  
+    
+    
+    
+  const gcdVal = gcd(w,h)
+  return w*h - (w+h - gcdVal)
+  
+    
+}
+```
+
+> https://programmers.co.kr/learn/courses/30/lessons/42748
+```jsx
+function solution(array, commands) {
+  let result = []
+   for(let w = 0; w < commands.length; w++) {
+    const [i, j, k] = commands[w]
+    let newArray = array.slice(i-1, j)
+    newArray.sort((a,b) => a-b)
+    result.push(newArray[k-1])
+   }
+   return result
+//     1. slice(i-1,j)
+//     2. arr.sort()오름차순
+//     3. arr[k-1] 이거를 빈배열에 푸시해주자.
+//     commands를 반복문으로 돌리자.    
+// 재귀로 해볼까???  
+ 
+    
+}
+```
+
+> https://programmers.co.kr/learn/courses/30/lessons/42576
+```jsx
+function solution(participant, completion) {
+
+ // 1. sort()를 이용해서 알파벳 순서대로 정렬을 해준다. 
+ // 2. 반복문을 돌려서 같은 인덱스에 값이 같으면 continue, 같지 않다면 그 값을 리턴한다.    
+  participant.sort()  //[ 'eden', 'kiki', 'leo' ]
+  completion.sort()   //[ 'eden', 'kiki' ]
+    
+   for (let i = 0; i < participant.length; i++) {
+        if(participant[i] === completion[i]) {
+                 continue
+        }else {
+             return participant[i]
+        }
+   }    
+   }
+   ```
